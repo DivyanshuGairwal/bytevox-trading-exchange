@@ -1,0 +1,20 @@
+-- CreateTable
+CREATE TABLE "Order" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "side" TEXT NOT NULL,
+    "price" REAL NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "remainingQuantity" INTEGER NOT NULL,
+    "status" TEXT NOT NULL DEFAULT 'OPEN',
+    "createdAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+-- CreateTable
+CREATE TABLE "Trade" (
+    "id" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
+    "buyOrderId" INTEGER NOT NULL,
+    "sellOrderId" INTEGER NOT NULL,
+    "price" REAL NOT NULL,
+    "quantity" INTEGER NOT NULL,
+    "timestamp" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);

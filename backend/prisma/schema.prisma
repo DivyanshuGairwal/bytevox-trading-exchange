@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+enum Side {
+  BUY
+  SELL
+}
+
+enum Status {
+  OPEN
+  PARTIAL
+  FILLED
+}
+
+model Order {
+  id                Int      @id @default(autoincrement())
+  side              Side
+  price             Float
+  quantity          Int
+  remainingQuantity Int
+  status            Status   @default(OPEN)
+  createdAt         DateTime @default(now())
+}
+
+model Trade {
+  id          Int      @id @default(autoincrement())
+  buyOrderId  Int
+  sellOrderId Int
+  price       Float
+  quantity    Int
+  timestamp   DateTime @default(now())
+}
