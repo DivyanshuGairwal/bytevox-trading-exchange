@@ -29,7 +29,7 @@ interface Stats {
   totalTradesExecuted: number;
 }
 
-const API_BASE = "http://localhost:3000";
+const API_BASE = "https://bytevox-trading-exchange.onrender.com";
 
 // ─── Page ─────────────────────────────────────────────────────────────────────
 
