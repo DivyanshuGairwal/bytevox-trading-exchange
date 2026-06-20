@@ -29,7 +29,8 @@ interface Stats {
   totalTradesExecuted: number;
 }
 
-const API_BASE = "http://localhost:3000";
+const API_BASE =   process.env.NEXT_PUBLIC_API_URL ||
+"http://localhost:3000";
 
 // ─── Page ─────────────────────────────────────────────────── ──────────────────
 
@@ -76,7 +77,11 @@ export default function Dashboard() {
   useEffect(() => {
     fetchAll();
   
-    const ws = new WebSocket("ws://localhost:3000");
+    const WS_URL =
+  process.env.NEXT_PUBLIC_WS_URL ||
+  "ws://localhost:3000";
+
+const ws = new WebSocket(WS_URL);
   
     ws.onmessage = (event) => {
       const data = JSON.parse(event.data);
