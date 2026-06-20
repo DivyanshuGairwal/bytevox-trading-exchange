@@ -30,6 +30,12 @@ app.get("/test-db", async (_req, res) => {
   });
 });
 
+app.get("/", (_req, res) => {
+  res.json({
+    message: "ByteVox Exchange API Running",
+  });
+});
+
 app.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
