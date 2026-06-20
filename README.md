@@ -125,11 +125,11 @@ The application includes Docker and Docker Compose configuration for consistent 
 
 ### Dashboard
 
-![Dashboard](Docs/screenshots/Dashboard.png)
+![Dashboard](docs/screenshot/Dashboard.png)
 
 ### Trade History
 
-![Trade History](Docs/screenshots/Trades.png)
+![Trade History](docs/screenshot/Trades.png)
 
 ## Author
 
