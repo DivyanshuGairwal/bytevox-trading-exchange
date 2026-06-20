@@ -98,7 +98,7 @@ docker compose up
 ## Deployment
 
 Frontend:
-<your vercel link>
+https://bytevox-trading-exchange.vercel.app
 
 Backend:
 https://bytevox-trading-exchange.onrender.com
@@ -120,6 +120,16 @@ Connected clients automatically refresh:
 ### Docker Support
 
 The application includes Docker and Docker Compose configuration for consistent setup across environments.
+
+## Screenshots
+
+### Dashboard
+
+![Dashboard](docs/screenshots/Dashboard.png)
+
+### Trade History
+
+![Trade History](docs/screenshots/Trades.png)
 
 ## Author
 
