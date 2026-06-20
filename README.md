@@ -1,148 +1,126 @@
-# ByteVox Trading Exchange
+# BYTEVOX Trading Exchange
 
-A simplified exchange built for the ByteVox Full Stack Engineering Internship Technical Assignment.
+A simplified exchange simulation built for the ByteVox Full Stack Engineering Internship Technical Assignment.
 
-## Overview
+The application allows users to place buy and sell orders, automatically matches compatible orders, maintains an order book, records completed trades, and provides real-time updates through WebSockets.
 
-This project simulates a trading exchange for a fictional asset called BYTE.
+## Features
 
-Users can:
+### Core Features
 
-- Place BUY orders
-- Place SELL orders
-- View the order book
-- View trade history
-- View exchange statistics
+- Buy and Sell Order Submission
+- Price-Time Priority Matching Engine
+- Partial Order Fills
+- Live Order Book
+- Trade History
+- Exchange Statistics Dashboard
 
-The system automatically matches compatible orders and supports partial fills.
+### Bonus Features Implemented
 
----
+- Real-Time Updates using WebSockets
+- Docker Support
+- Docker Compose Support
+- Live Deployment
 
 ## Tech Stack
 
 ### Frontend
+
 - Next.js
 - TypeScript
-- Tailwind CSS
+- React
 
 ### Backend
+
 - Express.js
 - TypeScript
 - Prisma ORM
 
 ### Database
+
 - SQLite
 
----
+### Real-Time Communication
 
-## Features
+- WebSockets
 
-### Order Submission
-Create BUY and SELL orders.
+### Containerization
 
-### Order Book
-Displays:
-- Buy Orders (Highest Price First)
-- Sell Orders (Lowest Price First)
+- Docker
+- Docker Compose
 
-### Matching Engine
-Automatically executes trades when:
+## Matching Logic
 
-BUY PRICE >= SELL PRICE
+The matching engine follows price-time priority.
 
-Supports partial order fills.
+BUY orders match against the lowest available SELL orders.
 
-### Trade History
-Displays:
-- Price
-- Quantity
-- Timestamp
+SELL orders match against the highest available BUY orders.
 
-### Statistics
-Displays:
-- Total Buy Orders
-- Total Sell Orders
-- Total Trades Executed
+Trades execute whenever:
 
----
+BUY_PRICE >= SELL_PRICE
+
+Partial fills are supported.
 
 ## API Endpoints
 
-### Create Order
-
 POST /orders
-
-Example:
-
-```json
-{
-  "side": "BUY",
-  "price": 100,
-  "quantity": 5
-}
-```
-
-### Get Order Book
 
 GET /orderbook
 
-### Get Trades
-
 GET /trades
-
-### Get Statistics
 
 GET /stats
 
----
+## Running Locally
 
-## Project Structure
+### Backend
 
-```
-
-backend/
-frontend/
-
-```
-
----
-
-## Running Backend
-
-```bash
 cd backend
+
 npm install
+
 npm run dev
-```
 
-Backend runs on:
+### Frontend
 
-```
-http://localhost:3000
-```
-
----
-
-## Running Frontend
-
-```bash
 cd frontend
+
 npm install
+
 npm run dev
-```
 
-Frontend runs on:
+## Docker
 
-```
-http://localhost:3001
-```
+docker compose up
 
----
+## Deployment
 
-## Future Improvements
+Frontend:
+<your vercel link>
 
-- WebSocket based real-time updates
-- Order cancellation
-- Market orders
-- Docker support
-- Depth chart visualization
+Backend:
+https://bytevox-trading-exchange.onrender.com
+
+## Bonus Features
+
+### Real-Time Updates
+
+Implemented using WebSockets.
+
+Whenever a new order is submitted and processed, the backend broadcasts an update event.
+
+Connected clients automatically refresh:
+
+- Order Book
+- Trade History
+- Statistics
+
+### Docker Support
+
+The application includes Docker and Docker Compose configuration for consistent setup across environments.
+
+## Author
+
+Divyanshu Gairwal
