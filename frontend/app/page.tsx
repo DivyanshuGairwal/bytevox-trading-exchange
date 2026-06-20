@@ -29,9 +29,9 @@ interface Stats {
   totalTradesExecuted: number;
 }
 
-const API_BASE = "https://bytevox-trading-exchange.onrender.com";
+const API_BASE = "http://localhost:3000";
 
-// ─── Page ─────────────────────────────────────────────────────────────────────
+// ─── Page ─────────────────────────────────────────────────── ──────────────────
 
 export default function Dashboard() {
   const [stats, setStats] = useState<Stats>({
@@ -75,6 +75,20 @@ export default function Dashboard() {
 
   useEffect(() => {
     fetchAll();
+  
+    const ws = new WebSocket("ws://localhost:3000");
+  
+    ws.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+  
+      if (data.type === "BOOK_UPDATED") {
+        fetchAll();
+      }
+    };
+    
+    return () => {
+      ws.close();
+    };
   }, [fetchAll]);
 
   // ── Order submission ────────────────────────────────────────────────────────

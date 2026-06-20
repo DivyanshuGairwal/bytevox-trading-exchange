@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import { Side } from "@prisma/client";
 import { prisma } from "../lib/prisma";
 import { matchOrder } from "../services/matchingEngine";
+import { broadcastUpdate } from "../websocket";
 
 export async function createOrder(req: Request, res: Response) {
   const { side, price, quantity } = req.body;
@@ -33,6 +34,8 @@ export async function createOrder(req: Request, res: Response) {
   });
   
   const result = await matchOrder(order.id);
+  
+  broadcastUpdate();
   
   return res.status(201).json(result);
 }

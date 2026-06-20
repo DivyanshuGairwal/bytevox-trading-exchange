@@ -1,3 +1,5 @@
+import http from "http";
+import { initWebSocket } from "./websocket";
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
@@ -36,6 +38,10 @@ app.get("/", (_req, res) => {
   });
 });
 
-app.listen(port, () => {
+const server = http.createServer(app);
+
+initWebSocket(server);
+
+server.listen(port, () => {
   console.log(`Server listening on port ${port}`);
 });
