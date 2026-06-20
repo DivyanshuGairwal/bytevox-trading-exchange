@@ -23,6 +23,9 @@ export async function createOrder(req: Request, res: Response) {
     return res.status(400).json({ error: "quantity must be greater than 0" });
   }
 
+
+  
+
   const order = await prisma.order.create({
     data: {
       side,
@@ -34,8 +37,10 @@ export async function createOrder(req: Request, res: Response) {
   });
   
   const result = await matchOrder(order.id);
-  
+
   broadcastUpdate();
   
   return res.status(201).json(result);
 }
+
+
